@@ -16,8 +16,8 @@
         android:keepScreenOn="true"
         android:text="@string/dummy_content"
         android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textSize="12pt"
+        android:textStyle="normal" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
