@@ -44,6 +44,22 @@ public class Chartdata extends AppCompatActivity {
         // Set sidereal mode:
         sw.swe_set_sid_mode(SweConst.SE_SIDM_LAHIRI, 0, 0);
 
+        // b. Topocentric positions
+        // To compute topocentric positions, i.e. positions referred to the place of the observer (the birth place) rather than to the center of the earth, do as follows:
+        //       - call swe_set_topo(geo_lon, geo_lat, altitude_above_sea)  (The longitude and latitude must be in degrees, the altitude in meters.)
+        //       - add the flag SEFLG_TOPOCTR toiflag
+        //       - call swe_calc(...)
+
+        // Set the geographic location for topocentric planet computation
+        sw.swe_set_topo(
+                -2.35,  // double geolon, geographic longitude
+                // eastern longitude is positive,
+                // western longitude is negative,
+                51.5,   // double geolat,      geographic latitude
+                // northern latitude is positive,
+                // southern latitude is negative */
+                0       // double altitude, altitude above sea
+        );
         // Print input details:
         printString = getDateinfo(sd);
         printString += getLocationinfo(longitude, latitude);
@@ -80,10 +96,11 @@ public class Chartdata extends AppCompatActivity {
                 SweConst.SE_SATURN,
                 SweConst.SE_TRUE_NODE };	// Some systems prefer SE_MEAN_NODE
 
-        int flags = SweConst.SEFLG_SWIEPH |        // slow and least accurate calculation method
-                SweConst.SEFLG_SIDEREAL |    // sidereal zodiac
-                SweConst.SEFLG_NONUT |        // will be set automatically for sidereal calculations, if not set here
-                SweConst.SEFLG_SPEED;        // to determine retrograde vs. direct motion
+        int flags = SweConst.SEFLG_TOPOCTR |    // topocentric !!!!
+                SweConst.SEFLG_SWIEPH |         // slow and least accurate calculation method
+                SweConst.SEFLG_SIDEREAL |       // sidereal zodiac
+                SweConst.SEFLG_NONUT |          // will be set automatically for sidereal calculations, if not set here
+                SweConst.SEFLG_SPEED;           // to determine retrograde vs. direct motion
         boolean retrograde = false;
 
         for(int p = 0; p < planets.length; p++) {
