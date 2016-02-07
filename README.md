@@ -6,4 +6,4 @@ As far as I can tell all you need to do is put the swissephSWI-2.00.00-01.jar fi
 
 And the line https://github.com/AaronNGray/AndroidSwissEphemerisExample/blob/master/app/build.gradle#L23 will include the library automatically.
 
-Modified app/src/main/java/org/swissephemeris/swissephemeris/Chartdata.java to give topocentric values.
+Modified https://github.com/AaronNGray/AndroidSwissEphemerisExample/blob/master/app/src/main/java/org/swissephemeris/swissephemeris/Chartdata.java to give topocentric values.
